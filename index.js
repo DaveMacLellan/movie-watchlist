@@ -5,12 +5,12 @@ document.getElementById("findMovie").addEventListener("click", getMovieList)
 
 function getMovieList() {
     results.innerHTML = ``
-    fetch(`http://www.omdbapi.com/?apikey=7bb14cc&s=${searchText.value}`)
+    fetch(`https://www.omdbapi.com/?apikey=7bb14cc&s=${searchText.value}`)
     .then(res => res.json())
     .then(data => {
         console.log(data)
         for(let i = 0; i < data.Search.length; i++){
-            fetch(`http://www.omdbapi.com/?apikey=7bb14cc&i=${data.Search[i].imdbID}`)
+            fetch(`https://www.omdbapi.com/?apikey=7bb14cc&i=${data.Search[i].imdbID}`)
             .then(res => res.json())
             .then(data => {
                 //console.log(data)
