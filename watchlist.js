@@ -15,14 +15,8 @@ function loopLocal(){
                         let id = button.id
                         for (var i = 0; i < currentWatchlist.length; i++){
                             if(id === currentWatchlist[i]){
-                                currentWatchlist.splice(i, 1)
-                                localStorage.setItem("allMovies", JSON.stringify(currentWatchlist));
-                                const div = document.getElementById(id)
-                                div.style.border = "none"                                
-                                div.style.padding = "0"                               
-                                div.innerHTML = ""                                
+                                removeData(id, i)                               
                             }
-                            
                         }
                         
                     })
@@ -49,15 +43,24 @@ function addHtml(movie) {
                     <div class="movie-main">
                         <h3 class="movie-title">${movie.Title}</h3>
                         <div class="movie-info">
-                            <p>${movie.Runtime}</p>
-                            <p>${movie.Genre}</p>
-                            <button class="removeMovie" id="${movie.imdbID}">Remove</button>
+                            <p class="runtime-text">${movie.Runtime}</p>
+                            <p class="genre-text">${movie.Genre}</p>
+                            <button class="removeMovie" id="${movie.imdbID}">Remove from Watchlist</button>
                         </div>
                         <div class="movie-plot">
-                            <p>${movie.Plot}</p>
+                            <p class="plot-text">${movie.Plot}</p>
                         </div>
                     </div>
                 </div> 
             `
+}
+
+function removeData(id, index){
+    currentWatchlist.splice(index, 1)
+    localStorage.setItem("allMovies", JSON.stringify(currentWatchlist));
+    const div = document.getElementById(id)
+    div.style.border = "none"                                
+    div.style.padding = "0"                               
+    div.innerHTML = ""     
 }
 

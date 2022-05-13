@@ -75,12 +75,12 @@ function addHtml(movie) {
             <div class="movie-main">
                 <h3 class="movie-title">${movie.Title}</h3>
                 <div class="movie-info">
-                    <p>${movie.Runtime}</p>
-                    <p>${movie.Genre}</p>
-                    <button class="addMovie" id="${movie.imdbID}">Watchlist</button>
+                    <p class="runtime-text">${movie.Runtime}</p>
+                    <p class="genre-text">${movie.Genre}</p>
+                    <button class="addMovie" id="${movie.imdbID}">Add to Watchlist</button>
                 </div>
                 <div class="movie-plot">
-                    <p>${movie.Plot}</p>
+                    <p class="plot-text">${movie.Plot}</p>
                 </div>
             </div>
         </div> 

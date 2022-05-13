@@ -1,19 +1,24 @@
 <html>
     <head>
+        <title>Movie Watchlist</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" media="(max-width: 650px)" href="./styles.css">
+        <link rel="stylesheet" media="(max-width: 500px)" href="./styles.css">
     </head>
     <body>
         <div class="container">
-            <div class="header">                
-                <h1>My Watchlist</h1>
-                <h4><a href="./index.html">Search Movies</a></h4>
+            <div class="header">           
+                <div class="title">
+                    <h1>My Watchlist</h1>
+                    <h4><a href="./index.html">Search Movies</a></h4>
+                </div>
+                <div class="page-desc">
+                    <p>View your watchlist and remove the movies you have seen!</p>
+                </div>
             </div>
             
             <div class="content" id="pageContent">
-                <div class="search-movie">
-                    <input class="search-bar" id="search-text" type="search">
-                    <button class="search-btn" id="findMovie"> Search</button>
-                </div>
                 <div class="search-results" id="results">                         
                 </div>               
             </div>
