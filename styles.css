@@ -21,6 +21,14 @@ h4 {
     color: #fff;
 }
 
+a{
+    text-decoration: none;
+}
+
+a:visited {
+    color: #fff;
+}
+
 .container {
     max-width: 80%;
     margin: 0 auto;
