@@ -17,13 +17,19 @@ function getMovieList() {
                 fetch(`https://www.omdbapi.com/?apikey=7bb14cc&i=${movie.imdbID}`)
                 .then(res => res.json())
                 .then(data => {
-                    const {imdbID} = data
+                    const {imdbID, Poster} = data
                     if(currentWatchlist === null){
-                        results.innerHTML += addHtml(data)
+                        if(Poster !== "N/A"){
+                            results.innerHTML += addHtml(data)
+                            console.log(Poster)
+                        }                        
                     }
                     else {
                         if(!currentWatchlist.includes(imdbID)){
-                            results.innerHTML += addHtml(data)
+                            if(Poster !== "N/A"){
+                                results.innerHTML += addHtml(data)
+                                console.log("no id")
+                            }
                         }                     
                     }                    
                     
