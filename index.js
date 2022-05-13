@@ -54,8 +54,7 @@ function getMovieList() {
                     })
                     watchBtns.forEach(button => {
                         button.addEventListener("keypress", (event)=> {
-                            let keycode = event.keycode
-                            if(keycode == '13'){
+                            if(event.keyCode === 13){
                                 fetch(`https://www.omdbapi.com/?apikey=7bb14cc&i=${button.id}`)
                                     .then(res => res.json())
                                     .then(data => {
