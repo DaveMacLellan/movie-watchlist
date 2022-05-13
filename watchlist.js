@@ -1,33 +1,32 @@
 const results = document.getElementById("results")
+let currentWatchlist = JSON.parse(localStorage.getItem("allMovies"));
 
-function loopLocal(){
-    let currentWatchlist = JSON.parse(localStorage.getItem("allMovies"));
-    results.innerHTML = ``
-    if(typeof currentWatchlist !== 'undefined' && currentWatchlist !== null){
+function loopLocal(){ 
+    results.innerHTML = ``  
+    if(typeof currentWatchlist !== 'undefined' && currentWatchlist !== null && currentWatchlist.length > 0){
         for (var i = 0; i < currentWatchlist.length; i++) {
             fetch(`https://www.omdbapi.com/?apikey=7bb14cc&i=${currentWatchlist[i]}`)
             .then(res => res.json())
             .then(data => {
-                const {Title, Runtime, Plot, Poster, Genre, imdbID} = data
-    
-                results.innerHTML += `
-                <div class="movie">
-                    <div class="movie-poster">
-                        <img class="poster" src="${Poster}">
-                    </div>
-                    <div class="movie-main">
-                        <h3 class="movie-title">${Title}</h3>
-                        <div class="movie-info">
-                            <p>${Runtime}</p>
-                            <p>${Genre}</p>
-                            <button class="removeMovie" id="${imdbID}">Remove</button>
-                        </div>
-                        <div class="movie-plot">
-                            <p>${Plot}</p>
-                        </div>
-                    </div>
-                </div> 
-            `
+                results.innerHTML += addHtml(data)                
+                watchBtns = document.querySelectorAll(".removeMovie")
+                watchBtns.forEach(button => {
+                    button.addEventListener("click", ()=> {
+                        let id = button.id
+                        for (var i = 0; i < currentWatchlist.length; i++){
+                            if(id === currentWatchlist[i]){
+                                currentWatchlist.splice(i, 1)
+                                localStorage.setItem("allMovies", JSON.stringify(currentWatchlist));
+                                const div = document.getElementById(id)
+                                div.style.border = "none"                                
+                                div.style.padding = "0"                               
+                                div.innerHTML = ""                                
+                            }
+                            
+                        }
+                        
+                    })
+                })
             })
         }
     }
@@ -40,3 +39,25 @@ function loopLocal(){
     }
 }
 loopLocal()
+
+function addHtml(movie) {
+    return  `
+                <div class="movie" id="${movie.imdbID}">
+                    <div class="movie-poster">
+                        <img class="poster" src="${movie.Poster}">
+                    </div>
+                    <div class="movie-main">
+                        <h3 class="movie-title">${movie.Title}</h3>
+                        <div class="movie-info">
+                            <p>${movie.Runtime}</p>
+                            <p>${movie.Genre}</p>
+                            <button class="removeMovie" id="${movie.imdbID}">Remove</button>
+                        </div>
+                        <div class="movie-plot">
+                            <p>${movie.Plot}</p>
+                        </div>
+                    </div>
+                </div> 
+            `
+}
+
