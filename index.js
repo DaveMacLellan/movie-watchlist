@@ -53,8 +53,8 @@ function getMovieList() {
                         })
                     })
                     watchBtns.forEach(button => {
-                        button.addEventListener("keypress", (event)=> {
-                            if(event.keyCode === 13){
+                        button.addEventListener("search", (event)=> {
+                            //if(event.keyCode === 13){
                                 fetch(`https://www.omdbapi.com/?apikey=7bb14cc&i=${button.id}`)
                                     .then(res => res.json())
                                     .then(data => {
@@ -68,8 +68,8 @@ function getMovieList() {
                                                 pushData(imdbID, button)                                                
                                             }          
                                         }  
-                            })
-                            }
+                                })
+                            //}
                         })
                     })
 
