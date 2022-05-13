@@ -146,6 +146,17 @@ a:visited {
         background: #252525;
     }
 
+    .title {
+        display: flex;
+        max-width: 90%;
+        flex-direction: column;
+        margin-bottom: 20px;        
+    }
+
+    .page-desc {
+        text-align: center;
+    }
+
     .movie {
         width: 100%;
         height: 150px;
@@ -158,13 +169,14 @@ a:visited {
     }
 
     .movie-main {
+        max-height: 200px;
         width: 100%;
         padding: 10px;
-        border: 1px solid red;
     }
 
     .movie-title {
-        font-size: 30px;
+        text-align: center;
+        font-size: 20px;
     }
 
     .movie-poster {
@@ -176,16 +188,25 @@ a:visited {
         width: 150px;
     }
 
+    .movie-info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .runtime-text {
-        font-size: 12px;
+        font-size: 15px;
+        margin-bottom: 5px;
     }
 
     .genre-text {
-        font-size: 12px;
+        font-size: 15px;
+        margin-bottom: 5px;
+        text-align: center;
     }
 
     .plot-text {
-        font-size: 14px;
+        display: none;
     }
 
     .movie-main {
@@ -193,14 +214,14 @@ a:visited {
     }
 
     .addMovie {
-        width: 55px;
-        padding: 5px 0;
+        width: 20px;
+        height: 20px;
         font-size: 10px;
         word-wrap: normal;
     }
 
     .removeMovie {
-        width: 55px;
+        width: 20px;
         padding: 5px 0;
         font-size: 10px;
         word-wrap: normal;

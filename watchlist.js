@@ -45,7 +45,7 @@ function addHtml(movie) {
                         <div class="movie-info">
                             <p class="runtime-text">${movie.Runtime}</p>
                             <p class="genre-text">${movie.Genre}</p>
-                            <button class="removeMovie" id="${movie.imdbID}">Remove from Watchlist</button>
+                            <button class="removeMovie" id="${movie.imdbID}">-</button>
                         </div>
                         <div class="movie-plot">
                             <p class="plot-text">${movie.Plot}</p>
