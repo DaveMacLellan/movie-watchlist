@@ -52,6 +52,26 @@ function getMovieList() {
                             })
                         })
                     })
+                    watchBtns.forEach(button => {
+                        button.addEventListener("keypress", (event)=> {
+                            if(event.key === "Enter"){
+                                fetch(`https://www.omdbapi.com/?apikey=7bb14cc&i=${button.id}`)
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        const {imdbID} = data
+                                        if(currentWatchlist === null){
+                                            currentWatchlist = []
+                                            pushData(imdbID, button)
+                                        }
+                                        else {
+                                            if(!currentWatchlist.includes(imdbID)){
+                                                pushData(imdbID, button)                                                
+                                            }          
+                                        }  
+                            })
+                            }
+                        })
+                    })
 
                 })
             }      
