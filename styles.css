@@ -147,14 +147,27 @@ a:visited {
     }
 
     .title {
-        display: flex;
+        display: inline-block;
         max-width: 90%;
-        flex-direction: column;
-        margin-bottom: 20px;        
+        margin-bottom: 20px;  
+    }
+
+    h4 {
+        text-align: center;
+        margin: 0 auto;
     }
 
     .page-desc {
+        padding: 0 50px;
         text-align: center;
+    }
+
+    .search-bar {
+        width: 50%;
+    }
+
+    .search-btn {
+        width: 20%;
     }
 
     .movie {

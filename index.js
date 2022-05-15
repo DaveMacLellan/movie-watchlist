@@ -5,6 +5,8 @@ let watchBtns = ""
 let watchlist = []
 let currentWatchlist = JSON.parse(localStorage.getItem("allMovies"));
 
+searchText.addEventListener("search", getMovieList)
+
 document.getElementById("findMovie").addEventListener("click", getMovieList)
 
 function getMovieList() {    
@@ -50,26 +52,6 @@ function getMovieList() {
                                             }          
                                         }  
                             })
-                        })
-                    })
-                    watchBtns.forEach(button => {
-                        button.addEventListener("search", (event)=> {
-                            //if(event.keyCode === 13){
-                                fetch(`https://www.omdbapi.com/?apikey=7bb14cc&i=${button.id}`)
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        const {imdbID} = data
-                                        if(currentWatchlist === null){
-                                            currentWatchlist = []
-                                            pushData(imdbID, button)
-                                        }
-                                        else {
-                                            if(!currentWatchlist.includes(imdbID)){
-                                                pushData(imdbID, button)                                                
-                                            }          
-                                        }  
-                                })
-                            //}
                         })
                     })
 
